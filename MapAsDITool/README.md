@@ -7,6 +7,7 @@ to Spring's Java configuration when DI is the only requirement.
 Of course, Spring is a comprehensive framework offering a wealth of
 functionality beyond DI.
 
+
 ## Description
 
 With Java 8, the `Map` interface introduced several new methods,
@@ -32,7 +33,6 @@ of its strengths.
 
 
 ## How does it work?
-
 
 The basic idea of using map as Dependency Injection (DI) tools comes from two needs of DI:
 
@@ -94,8 +94,23 @@ DI works just fine. Additional plus is no runtime dependencies and much much fas
 to execute.
 
 
+## When to use it?
+
+While this example opposes Java's HashMap to Spring Context there is really no
+comparison here. If one needs proper DI - Spring wins every time. There is so
+much additional stuff what Spring does that there is no conflict of opinions here.
+Use Spring and that's that.
+
+There are however situations where DI would be useful but you do not want to use
+external DI framework at all. For example initializing library. As library provider
+your really do not have luxury of using DI framework. Library owners need to write
+their own factories. And if you ever find yourself writing one, this style is
+certainly an open option..
+
+
 
 ## Build Instructions
 
 This project is a simple Maven-based Java 8 application.
 To build the project, simply run `mvn package`.
+

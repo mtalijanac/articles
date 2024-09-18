@@ -20,7 +20,7 @@
 *.rar
 
 # eclipse, maven, java
-/target/
+*/target/
 /.classpath
 /.project
 /.settings

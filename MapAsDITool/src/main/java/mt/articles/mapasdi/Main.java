@@ -6,10 +6,15 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        // warm up once both codepaths
+        // so that we do not measure a loading of spring classes
+        diUsingSpring();
+        diUsingMap();
+
+
         //
         // Load app using Spring as DI framework
         //
-        diUsingSpring();
         long springTime = -System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             diUsingSpring();
@@ -33,6 +38,7 @@ public class Main {
 
     }
 
+
     static String diUsingSpring() {
         AnnotationConfigApplicationContext springAppContext = new AnnotationConfigApplicationContext(SpringAppContext.class);
         ServiceBean serviceBean = springAppContext.getBean("service", ServiceBean.class);
@@ -40,6 +46,7 @@ public class Main {
         springAppContext.close();
         return res;
     }
+
 
     static String diUsingMap() throws Exception {
         MapAppContext mapAppContext = new MapAppContext();

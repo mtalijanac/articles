@@ -1,34 +1,35 @@
-# Using Java's Map as Dependency Injection tool
+# Using Java's Map as a Dependency Injection Tool
 
+This project demonstrates the use of Java's `Map`as a lightweight
+alternative for Dependency Injection (DI). The usage is comparable
+to Spring's Java configuration when DI is the only requirement.
 
-This project is demonstration of usage Java's Map as Dependency Injection tool.
-Usage is comparable to Spring's Java config as long as DI is the only requirement.
-
-Spring is, of course, proper framework with lots of usable code outside DI.
-
+Of course, Spring is a comprehensive framework offering a wealth of
+functionality beyond DI.
 
 ## Description
 
-Since Java 8 Map interface has additional methods of which one is very useful
-for as stand in implementation of DI. Demonstration of this usage is implemented in
-[MapAppContext.java](./src/main/java/mt/articles/mapasdi/MappAppContext.java) and
-for comparison project also contains implementation of same code but using Spring in
-[SpringAppContext.java](./src/main/java/mt/articles/mapasdi/SpringAppContext.java)
+With Java 8, the `Map` interface introduced several new methods,
+one of which is particularly useful for implementing a simple DI
+solution. This project showcases that approach in
+[MapAppContext.java](./src/main/java/mt/articles/mapasdi/MapAppContext.java).
+For comparison, the same functionality is implemented using Spring in
+[SpringAppContext.java](./src/main/java/mt/articles/mapasdi/SpringAppContext.java).
 
-Starting point is in [Main.java](./src/main/java/mt/articles/mapasdi/Main.java)
-where both contextes are loaded 1000 times as rudimentary benchmark. Output of
-running code 1000 times:
+The starting point is [Main.java](./src/main/java/mt/articles/mapasdi/Main.java),
+where both contexts are loaded 1000 times as a basic benchmark. The results
+of running the code 1000 times are as follows:
 
-    Spring time:   2275449800 ns, res: ServiceBean(nativeEncoding=Cp1250, dao=DaoBean(fileEncoding=UTF-8), manager=ManagerBean(dao=DaoBean(fileEncoding=UTF-8)))
-    Map time:        11775400 ns, res: ServiceBean(nativeEncoding=Cp1250, dao=DaoBean(fileEncoding=UTF-8), manager=ManagerBean(dao=DaoBean(fileEncoding=UTF-8)))
+```
+Spring time:  2275449800 ns, res: ServiceBean(nativeEncoding=Cp1250, dao=DaoBean(fileEncoding=UTF-8), manager=ManagerBean(dao=DaoBean(fileEncoding=UTF-8)))
+Map time:       11775400 ns, res: ServiceBean(nativeEncoding=Cp1250, dao=DaoBean(fileEncoding=UTF-8), manager=ManagerBean(dao=DaoBean(fileEncoding=UTF-8)))
+```
 
+Both DI approaches successfully initialize the same code. However,
+while Spring offers numerous features, bootstrap speed is not one
+of its strengths.
 
-Essentially both context implementations have successfully initialized the same code.
-And while Spring has many features, bootstrap speed is not the one to brag about.
+## Build Instructions
 
-
-## Build it yourself
-
-This project is a plain Maven jar project on top of Java 8.
-To build project 'mvn package' should be sufficient.
-
+This project is a simple Maven-based Java 8 application.
+To build the project, simply run `mvn package`.
